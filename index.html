@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buku Absen Kelas</title>
+<meta name="description" content="Catat kehadiran kelas, simpan otomatis, dan unduh rekap dalam format CSV.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="masthead__brand">
+      <h1>Buku Absen</h1>
+      <p class="masthead__store" id="storeNote"></p>
+    </div>
+
+    <div class="masthead__meta">
+      <label class="field">
+        <span class="field__label">Kelas</span>
+        <input id="inputKelas" list="kelasList" placeholder="X-3" value="X-3" autocomplete="off" spellcheck="false">
+        <datalist id="kelasList"></datalist>
+      </label>
+      <label class="field">
+        <span class="field__label">Tanggal</span>
+        <input id="inputTanggal" type="date">
+      </label>
+      <label class="field field--kegiatan">
+        <span class="field__label">Kegiatan</span>
+        <input id="inputKegiatan" placeholder="Matematika, bab 3" autocomplete="off">
+      </label>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Bagian">
+    <button class="tab" role="tab" id="tab-absen" aria-controls="view-absen" aria-selected="true" data-view="absen">Absen</button>
+    <button class="tab" role="tab" id="tab-rekap" aria-controls="view-rekap" aria-selected="false" data-view="rekap">Rekap</button>
+    <button class="tab" role="tab" id="tab-siswa" aria-controls="view-siswa" aria-selected="false" data-view="siswa">Siswa</button>
+  </nav>
+
+  <main>
+    <section class="view" id="view-absen" role="tabpanel" aria-labelledby="tab-absen"></section>
+    <section class="view" id="view-rekap" role="tabpanel" aria-labelledby="tab-rekap" hidden></section>
+    <section class="view" id="view-siswa" role="tabpanel" aria-labelledby="tab-siswa" hidden></section>
+  </main>
+
+  <footer class="colophon">
+    <span>Data absen tersimpan otomatis setiap kali status diubah.</span>
+    <span id="footerStat"></span>
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="./config.js"></script>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
